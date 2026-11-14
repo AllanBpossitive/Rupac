@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17251f">
+<title>Rúpac | Guía digital de Pampas a Rúpac</title>
+<style>
+:root{--ink:#17251f;--muted:#64736b;--paper:#f5f4ef;--white:#fff;--green:#345b45;--lime:#c9d8a2;--line:#dfe4da;--sand:#e9dfcb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6}
+a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+nav{position:sticky;top:0;z-index:10;background:#f5f4efeF;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:850;letter-spacing:.12em;font-size:14px}.brand span{color:var(--green)}.links{display:flex;gap:22px;font-size:13px;color:#526158}.links a{text-decoration:none}.links a:hover{color:var(--green)}
+.hero{background:linear-gradient(110deg,rgba(16,31,24,.92),rgba(24,48,35,.68)),radial-gradient(ellipse at 75% 20%,#9b9b69 0%,#405c45 38%,#18291f 78%);color:white;padding:92px 0 86px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:480px;height:480px;border:1px solid #ffffff24;border-radius:50%;right:-100px;top:-160px;box-shadow:0 0 0 55px #ffffff08,0 0 0 110px #ffffff06}
+.kicker{text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:#d7e2c3;font-weight:700}.hero h1{font-size:clamp(42px,7vw,78px);line-height:.98;letter-spacing:-.055em;max-width:780px;margin:20px 0}.hero p{max-width:620px;color:#e0e8df;font-size:17px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;background:var(--lime);color:var(--ink);text-decoration:none;font-weight:750;font-size:13px;border:1px solid transparent;cursor:pointer}
+.btn.ghost{background:transparent;border-color:#ffffff70;color:white}.meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:44px;color:#d7e2d5;font-size:12px}.meta b{color:white}
+section{padding:76px 0}.eyebrow{color:var(--green);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}.heading{font-size:clamp(29px,4vw,44px);letter-spacing:-.04em;line-height:1.1;margin:10px 0 14px}.intro{max-width:700px;color:var(--muted);margin:0}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px}.num{font-size:12px;color:var(--green);font-weight:850;letter-spacing:.12em}.card h3{margin:10px 0 7px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#d7dfd4;border:1px solid #d7dfd4;border-radius:18px;overflow:hidden;margin-top:30px}.stat{background:#eef1e9;padding:22px}.stat strong{display:block;font-size:32px;letter-spacing:-.05em}.stat span{font-size:12px;color:var(--muted)}
+.map-section{background:#e9ede5}.mapbox{margin-top:32px;background:#f8f8f2;border:1px solid #d6ded3;border-radius:22px;padding:26px;overflow:hidden}
+.map-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}.map-head p{margin:3px 0;color:var(--muted);font-size:13px}
+.route{display:grid;grid-template-columns:1fr 70px 1fr 70px 1fr;align-items:center;gap:8px;margin:36px 0 24px}
+.stop{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;min-height:126px}.pin{width:30px;height:30px;border-radius:50%;background:#e7eedc;color:var(--green);display:grid;place-items:center;font-size:14px;font-weight:900}.stop h3{font-size:15px;margin:10px 0 2px}.stop p{font-size:12px;color:var(--muted);margin:0}.connector{height:2px;background:#9aab91;position:relative}.connector:after{content:"›";position:absolute;right:-2px;top:-15px;color:var(--green);font-size:24px}
+.map-note{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}.tool{background:white;border:1px solid var(--line);border-radius:20px;padding:26px}.tool .symbol{font-size:25px}.tool h3{font-size:22px;margin:8px 0}.tool p{color:var(--muted);font-size:14px}.tool ul{padding-left:18px;color:#45564b;font-size:13px}.tool .btn{margin-top:10px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}.step{padding:22px 0;border-top:2px solid var(--green)}.step b{font-size:12px;color:var(--green);letter-spacing:.12em}.step h3{margin:8px 0;font-size:18px}.step p{margin:0;color:var(--muted);font-size:14px}
+.checklist{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}.check{display:flex;gap:12px;align-items:flex-start;background:white;border:1px solid var(--line);padding:14px 16px;border-radius:13px;font-size:14px}.check input{accent-color:var(--green);margin-top:5px;width:16px;height:16px}.check small{display:block;color:var(--muted);font-size:12px}
+.responsible{background:#1c3025;color:white}.responsible .eyebrow{color:#c9d8a2}.responsible .intro{color:#d3ddd3}.responsible-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center;margin-top:28px}.responsible ul{padding-left:20px;color:#e0e8df}.callout{background:#ffffff12;border:1px solid #ffffff30;padding:24px;border-radius:18px}.callout strong{font-size:30px;display:block;color:#d7e5b8;line-height:1.2}.callout p{font-size:13px;color:#d5dfd5}
+footer{padding:28px 0;color:var(--muted);font-size:12px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+.notice{font-size:12px;color:var(--muted);margin-top:14px}
+@media(max-width:760px){.links{display:none}.hero{padding:70px 0}.problem-grid,.tools,.steps,.responsible-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.route{grid-template-columns:1fr;gap:10px;margin:24px 0}.connector{height:22px;width:2px;margin:auto}.connector:after{content:"⌄";top:2px;left:-7px;right:auto}.checklist{grid-template-columns:1fr}.mapbox{padding:17px}section{padding:58px 0}}
+
+.form-layout{display:grid;grid-template-columns:1.4fr .75fr;gap:18px;align-items:start;margin-top:30px}
+.visitor-form,.form-side{background:white;border:1px solid var(--line);border-radius:20px;padding:26px}
+.visitor-form{display:grid;gap:16px}
+.visitor-form label{display:grid;gap:6px;font-size:13px;font-weight:700}
+.visitor-form input:not([type=checkbox]),.visitor-form select,.visitor-form textarea{font:inherit;width:100%;padding:12px;border:1px solid #cad4c9;border-radius:10px;background:#fff;color:var(--ink);font-weight:400}
+.visitor-form input:focus,.visitor-form select:focus,.visitor-form textarea:focus{outline:2px solid #98b29b}
+.visitor-form .consent{display:flex;gap:10px;align-items:start;font-weight:400}
+.visitor-form .consent input{margin-top:4px;accent-color:var(--green)}
+.form-side h3{margin:8px 0}.form-side p{font-size:13px;color:var(--muted)}
+.response-count{font-size:60px;font-weight:850;line-height:1.2;color:var(--green)}
+.form-side .btn{width:100%;margin-top:12px}.secondary-btn{background:white;border-color:#bdcdbf}
+@media(max-width:760px){.form-layout{grid-template-columns:1fr}.visitor-form,.form-side{padding:20px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav"><a class="brand" href="#inicio" style="text-decoration:none">RÚPAC<span> / GUÍA DIGITAL</span></a><div class="links"><a href="#problema">El problema</a><a href="#ruta">La ruta</a><a href="#herramientas">Herramientas</a><a href="#registro">Formulario</a><a href="#preparacion">Prepárate</a><a href="#cuidado">Turismo responsable</a></div></div></nav>
+<header class="hero" id="inicio"><div class="wrap">
+<div class="kicker">Guía digital · Huaral · Lima, Perú</div>
+<h1>De Pampas<br>a Rúpac.</h1>
+<p>Una guía para orientarte mejor en el camino hacia el complejo arqueológico de Rúpac. Conoce el recorrido, prepárate antes de salir y ayuda a cuidar este patrimonio.</p>
+<div class="hero-actions"><a class="btn" href="#ruta">Explorar el recorrido ↓</a><a class="btn ghost" href="#herramientas">Conocer la propuesta</a></div>
+<div class="meta"><span><b>7 km aprox.</b> de caminata</span><span><b>3 horas aprox.</b> de recorrido</span><span><b>Ruta a pie</b> desde Pampas</span></div>
+</div></header>
+<main>
+<section id="problema"><div class="wrap"><div class="eyebrow">01 · ¿Por qué esta guía?</div><h2 class="heading">Un camino que necesita<br>más orientación.</h2><p class="intro">El recorrido desde San Salvador de Pampas hasta Rúpac se realiza a pie. La falta de señalización puede dificultar la orientación, especialmente para quienes visitan el lugar por primera vez.</p>
+<div class="problem-grid">
+<article class="card"><div class="num">01 / SEÑALIZACIÓN</div><h3>Pocas indicaciones</h3><p>Hay pocas señales que indiquen el camino, los puntos de descanso y las distancias entre sectores.</p></article>
+<article class="card"><div class="num">02 / CONECTIVIDAD</div><h3>Señal limitada</h3><p>En Pampas la señal de celular es casi inexistente. Por eso es importante revisar la información antes de iniciar la caminata.</p></article>
+<article class="card"><div class="num">03 / CUIDADO</div><h3>Riesgo de desorientación y residuos</h3><p>Sin orientación ni normas visibles, los visitantes pueden salirse del sendero o dejar residuos durante el recorrido.</p></article>
+</div>
+<div class="stats"><div class="stat"><strong>7 km</strong><span>Distancia aproximada indicada en el proyecto</span></div><div class="stat"><strong>3 h</strong><span>Tiempo estimado de caminata</span></div><div class="stat"><strong>0 / baja</strong><span>Disponibilidad de señal celular en Pampas, según el PPT</span></div></div>
+</div></section>
+<section class="map-section" id="ruta"><div class="wrap"><div class="eyebrow">02 · Orientación del recorrido</div><h2 class="heading">El recorrido, paso a paso.</h2><p class="intro">La propuesta es contar con un mapa digital que ayude a identificar el inicio, los puntos de descanso y la llegada a Rúpac.</p>
+<div class="mapbox"><div class="map-head"><div><strong>Esquema general de la ruta</strong><p>San Salvador de Pampas → Complejo Arqueológico de Rúpac</p></div><span class="kicker" style="color:#49634e">RECORRIDO A PIE</span></div>
+<div class="route">
+<div class="stop"><div class="pin">A</div><h3>San Salvador de Pampas</h3><p>Punto de partida. Revisa el mapa y prepara lo necesario antes de salir.</p></div>
+<div class="connector"></div>
+<div class="stop"><div class="pin">B</div><h3>Puntos de descanso</h3><p>Ubicaciones que deben identificarse y marcarse en el mapa del proyecto.</p></div>
+<div class="connector"></div>
+<div class="stop"><div class="pin">C</div><h3>Rúpac</h3><p>Llegada al complejo arqueológico. Respeta el patrimonio y el entorno.</p></div>
+</div>
+<p class="map-note"><b>Importante:</b> este gráfico es un esquema orientativo, no un mapa topográfico ni una navegación GPS. Los puntos intermedios exactos deben tomarse del mapa elaborado en Google My Maps. Descarga o consulta la información antes de iniciar, porque la señal celular en Pampas es muy limitada.</p>
+</div></div></section>
+<section id="herramientas"><div class="wrap"><div class="eyebrow">03 · Solución tecnológica</div><h2 class="heading">Dos herramientas.<br>Un recorrido mejor organizado.</h2><p class="intro">El proyecto propone combinar un mapa digital con un formulario para orientar a los visitantes y recoger información útil.</p>
+<div class="tools">
+<article class="tool"><div class="symbol">🗺️</div><h3>Google My Maps</h3><p>Un mapa personalizado para visualizar el recorrido desde San Salvador de Pampas hasta Rúpac.</p><ul><li>Marcar el punto de inicio en Pampas.</li><li>Señalar puntos de descanso.</li><li>Identificar el punto de llegada en Rúpac.</li><li>Compartir el mapa mediante un enlace.</li></ul><a class="btn" href="#ruta">Ver esquema de la ruta ↓</a></article>
+<article class="tool"><div class="symbol">📝</div><h3>Google Forms</h3><p>Un formulario para registrar información de los visitantes y conocer su experiencia.</p><ul><li>Registrar a los visitantes.</li><li>Consultar qué envases llevan y retiran.</li><li>Recoger opiniones sobre la ruta.</li><li>Identificar necesidades de señalización.</li></ul><a class="btn" href="#registro">Responder formulario ↓</a></article>
+</div>
+<p class="notice">Esta versión incluye un formulario funcional dentro de la web. Las respuestas se guardan únicamente en este navegador y pueden exportarse como CSV. Para recoger respuestas de diferentes visitantes en una misma base de datos hará falta conectar un servicio externo.</p>
+</div></section>
+<section><div class="wrap"><div class="eyebrow">05 · Cómo usar la guía</div><h2 class="heading">Antes de empezar la caminata.</h2><div class="steps">
+<div class="step"><b>PASO 01</b><h3>Consulta el mapa</h3><p>Abre el mapa compartido y reconoce el inicio, los descansos y el destino antes de salir de Pampas.</p></div>
+<div class="step"><b>PASO 02</b><h3>Registra tu visita</h3><p>Completa el formulario del proyecto y revisa las recomendaciones para el recorrido.</p></div>
+<div class="step"><b>PASO 03</b><h3>Sigue el sendero</h3><p>Usa el mapa como referencia, mantente en el camino y respeta el entorno durante toda la caminata.</p></div>
+</div></div></section>
+
+<section id="registro" style="background:#e9ede5"><div class="wrap">
+<div class="eyebrow">04 · Formulario interactivo</div>
+<h2 class="heading">Registra tu visita y comparte tu experiencia.</h2>
+<p class="intro">Este formulario permite registrar la visita, los envases y la percepción sobre la señalización. Los datos se guardan en el navegador de este dispositivo; no se envían a internet.</p>
+<div class="form-layout">
+<form id="visitorForm" class="visitor-form">
+<label>Nombre o alias (opcional)<input name="nombre" type="text" maxlength="80" placeholder="Ej.: Visitante 01"></label>
+<label>Fecha de visita<input name="fecha" type="date" required></label>
+<label>¿En qué momento respondes?<select name="momento" required><option value="">Selecciona una opción</option><option>Antes de iniciar</option><option>Después de la caminata</option></select></label>
+<label>¿Cuántas botellas o envases llevas contigo?<input name="envases" type="number" min="0" max="200" required placeholder="Ej.: 2"></label>
+<label>¿Cuántos envases y envolturas trajiste de regreso? (si aún no terminaste, deja en blanco)<input name="retorno" type="number" min="0" max="200" placeholder="Ej.: 3"></label>
+<label>¿Cómo calificarías la señalización del recorrido?<select name="senalizacion" required><option value="">Selecciona una opción</option><option>No la he evaluado aún</option><option>Muy buena</option><option>Buena</option><option>Regular</option><option>Deficiente</option><option>Muy deficiente</option></select></label>
+<label>¿Tuviste dificultades para orientarte?<select name="dificultad" required><option value="">Selecciona una opción</option><option>Aún no he realizado el recorrido</option><option>Sí</option><option>No</option></select></label>
+<label>¿Qué mejorarías de la ruta?<textarea name="comentarios" rows="3" maxlength="700" placeholder="Más señales, puntos de descanso, información previa..."></textarea></label>
+<label class="consent"><input name="consentimiento" type="checkbox" required><span>Acepto que estos datos se guarden localmente en este dispositivo con fines demostrativos y académicos.</span></label>
+<button class="btn" type="submit">Guardar respuesta ✓</button>
+<p id="formStatus" role="status" aria-live="polite" class="notice"></p>
+</form>
+<aside class="form-side">
+<div class="num">PANEL DEMOSTRATIVO</div><h3>Respuestas registradas</h3><div class="response-count" id="responseCount">0</div>
+<p>Las respuestas quedan guardadas únicamente en este navegador. Puedes descargarlas para analizarlas en Excel.</p>
+<button class="btn" id="exportCsv" type="button">Descargar respuestas CSV ↓</button>
+<button class="btn secondary-btn" id="clearResponses" type="button">Borrar respuestas locales</button>
+<p class="notice">No es un Google Forms real ni comparte automáticamente datos entre celulares. Para una encuesta pública, después se puede conectar Google Forms o una base de datos.</p>
+</aside>
+</div>
+</div></section>
+<section id="preparacion" style="background:#f0eee6"><div class="wrap"><div class="eyebrow">06 · Prepara tu visita</div><h2 class="heading">¿Qué necesitas llevar?</h2><p class="intro">Marca los elementos que ya tienes listos. Esta lista es una recomendación práctica para una caminata de varias horas.</p>
+<div class="checklist">
+<label class="check"><input type="checkbox"><span><b>Agua suficiente</b><small>Hidrátate durante el recorrido.</small></span></label>
+<label class="check"><input type="checkbox"><span><b>Calzado adecuado</b><small>Usa zapatillas o botas con buena suela y agarre.</small></span></label>
+<label class="check"><input type="checkbox"><span><b>Alimentos y snacks</b><small>Lleva alimentos ligeros para la caminata.</small></span></label>
+<label class="check"><input type="checkbox"><span><b>Ropa por capas</b><small>Prepárate para cambios de temperatura y viento.</small></span></label>
+<label class="check"><input type="checkbox"><span><b>Protección solar</b><small>Gorra, bloqueador y lentes de sol.</small></span></label>
+<label class="check"><input type="checkbox"><span><b>Botiquín básico</b><small>Incluye artículos personales de primeros auxilios.</small></span></label>
+<label class="check"><input type="checkbox"><span><b>Bolsa para residuos</b><small>Regresa con todos tus residuos.</small></span></label>
+<label class="check"><input type="checkbox"><span><b>Mapa consultado previamente</b><small>Revisa la ruta antes de perder la señal.</small></span></label>
+</div></div></section>
+<section class="responsible" id="cuidado"><div class="wrap"><div class="eyebrow">07 · Turismo responsable</div><h2 class="heading">Disfrutar Rúpac también<br>es protegerlo.</h2><p class="intro">La guía digital no solo busca orientar al visitante: también puede promover hábitos responsables durante el recorrido.</p>
+<div class="responsible-grid"><ul><li>No abandones residuos en el sendero ni en el sitio arqueológico.</li><li>Lleva de regreso los envases y empaques que ingresaron contigo.</li><li>Permanece en los senderos establecidos.</li><li>No dañes ni extraigas elementos del patrimonio arqueológico.</li><li>Respeta el paisaje, la flora y la fauna del entorno.</li></ul>
+<div class="callout"><strong>Tu visita deja recuerdos, no residuos.</strong><p>El formulario propuesto permitirá registrar los envases que llevan los visitantes y recoger opiniones para mejorar la experiencia y la orientación.</p></div></div></div></section>
+</main>
+<footer><div class="wrap foot"><span><b>RÚPAC / GUÍA DIGITAL</b><br>Proyecto académico · Tecnología de la Información y Comunicación</span><span>Autores: Jose Amaro, Frans Cotrina, Fabrizio Choque,<br>Alan Huaccha y Daniel Hoyos · 2026-II</span></div></footer>
+
+<script>
+(function(){
+const key='rupac_visitas_v1';
+const form=document.getElementById('visitorForm');
+const count=document.getElementById('responseCount');
+const status=document.getElementById('formStatus');
+function load(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return []}}
+function update(){count.textContent=load().length}
+function save(rows){localStorage.setItem(key,JSON.stringify(rows));update()}
+form.addEventListener('submit',function(e){
+ e.preventDefault();
+ if(!form.reportValidity())return;
+ const data=Object.fromEntries(new FormData(form).entries());
+ delete data.consentimiento;
+ data.registrado_en=new Date().toISOString();
+ try{const rows=load();rows.push(data);save(rows);form.reset();status.textContent='Respuesta guardada correctamente en este navegador.'}
+ catch(e){status.textContent='No se pudo guardar. Revisa si tu navegador permite almacenamiento local.'}
+});
+document.getElementById('exportCsv').addEventListener('click',function(){
+ const rows=load();
+ if(!rows.length){alert('Todavía no hay respuestas guardadas.');return}
+ const cols=['registrado_en','nombre','fecha','momento','envases','retorno','senalizacion','dificultad','comentarios'];
+ const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+ const csv='\uFEFF'+[cols.map(quote).join(','),...rows.map(r=>cols.map(c=>quote(r[c])).join(','))].join('\r\n');
+ const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+ const a=document.createElement('a');a.href=url;a.download='respuestas_rupac.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+document.getElementById('clearResponses').addEventListener('click',function(){
+ if(confirm('¿Borrar todas las respuestas guardadas en este navegador?')){localStorage.removeItem(key);update();status.textContent='Respuestas locales borradas.'}
+});
+update();
+})();
+</script>
+</body></html>
